@@ -1,0 +1,86 @@
+body {
+  background-image: url("background.png");
+  font-family: sans-serif;
+}
+#lArrow {
+  position: absolute;
+  width: 150px;
+  top: 27%;
+  left: 48%
+}
+#header {
+  position: absolute;
+  left: 40%;
+  top: -3%;
+  font-size: 50px;
+}
+#date {
+  position: absolute;
+  top: 4.5%;
+  left: 40%;
+}
+#time {
+  position: absolute;
+  top: 4.5%;
+  left: 48.5%;
+}
+#temp {
+  position: absolute;
+  top: 4.5%;
+  left: 55%;
+}
+#rArrow {
+  position: absolute;
+  width: 150px;
+  transform: rotate(180deg);
+  top: 27%;
+  left: 75%;
+}
+#speedC {
+  position: absolute;
+  left: 10%;
+  top: 30%;
+}
+#batteryC {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+#speed {
+  position: absolute;
+  left: 15%;
+  font-size: 45px;
+  top: 22%;
+  color: rgb(255, 255, 255);
+}
+#battery {
+  position: absolute;
+  left: 35%;
+  font-size: 45px;
+  top: 22%;
+  color: rgb(255,255,255);
+}
+.gauge-container {
+    width: 300px;
+    height: 300px;
+    display: block;
+    padding: 10px;
+  }
+  .gauge-container > .gauge .dial {
+    stroke: #eee;
+    stroke-width: 2;
+    fill: rgba(0,0,0,0);
+  }
+  .gauge-container > .gauge .value {
+    stroke: rgb(47, 227, 255);
+    stroke-width: 2;
+    fill: rgba(0,0,0,0);
+  }
+  .gauge-container > .gauge .value-text {
+    fill: rgb(47, 227, 255);
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  
