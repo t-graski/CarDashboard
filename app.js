@@ -135,7 +135,7 @@ function welcome() {
 }
 async function loadTemperature() {
   try {
-    const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?id=7872055&appid=a8bbcfc9596bfb46e4a044c64db39297');
+    const response = await fetch('openweatherapihere');
     if (response.ok) {
       const body = await response.json();
       document.querySelector('#temp').innerHTML = Math.round(((body.list[0].main.temp - 273.15) + Number.EPSILON) * 100) / 100 + "°C"
