@@ -6,7 +6,7 @@ body {
   position: absolute;
   width: 150px;
   top: 27%;
-  left: 48%
+  left: 60.5%
 }
 #header {
   position: absolute;
@@ -16,25 +16,25 @@ body {
 }
 #date {
   position: absolute;
-  top: 4.5%;
-  left: 40%;
+  top: 7%;
+  left: 40.3%;
 }
 #time {
   position: absolute;
-  top: 4.5%;
-  left: 48.5%;
+  top: 7%;
+  left: 50%;
 }
 #temp {
   position: absolute;
-  top: 4.5%;
-  left: 55%;
+  top: 7%;
+  left: 56.5%;
 }
 #rArrow {
   position: absolute;
   width: 150px;
   transform: rotate(180deg);
   top: 27%;
-  left: 75%;
+  left: 89%;
 }
 #speedC {
   position: absolute;
@@ -82,5 +82,20 @@ body {
     font-weight: bold;
     font-size: 1em;
   }
-
+  #spotify {
+    position: absolute;
+    top:50%;
+    left:52%;
+  }
+  #light {
+    position: absolute;
+    left:90%;
+    width: 10%;
+  }
+  #lock {
+    position: absolute;
+    left: 84%;
+    top: 0%;
+    width: 15%;
+  }
   
