@@ -43,6 +43,8 @@ let cpuGaug2 = Gauge(document.getElementById("batteryC"), {
 speed = 0;
 battery = 100;
 let isBrake = false;
+let light = false;
+let lock = false;
 cpuGauge.setValue(speed);
 cpuGaug2.setValue(battery)
 
@@ -76,14 +78,61 @@ window.onkeydown = function input({ keyCode }) {
   if (keyCode == 83) {
     if (speed > 0 && !isBrake)
       isBrake = true;
-      brakeID = setInterval(brake, 175);
+    brakeID = setInterval(brake, 175);
   }
+  if (keyCode == 84) {
+    if (light) {
+      document.querySelector('#light').src = 'light_off.png';
+      light = false;
+    } else {
+      document.querySelector('#light').src = 'light_on.png';
+      light = true;
+    }
+  }
+  if (keyCode == 76) {
+    if (lock) {
+      document.querySelector('#lock').src = 'unlock.png';
+      lock = false;
+    } else {
+      document.querySelector('#lock').src = 'lock.png';
+      lock = true;
+    }
+  }
+
+  
+  let dangerID;
+  let noDangerID;
   console.log(keyCode);
   if (battery > 0) {
     if (keyCode == 87) {
-      isBrake = false;
-      if (speed < 260)
-        cpuGauge.setValueAnimated(speed += 0.5);
+      if (lock) {
+        isBrake = false;
+        dangerCount = 0;
+        if (speed < 260)
+          cpuGauge.setValueAnimated(speed += 0.5);
+      } else {
+        danger();
+        noDangerID = setInterval(noDanger, 500);
+        dangerID = setInterval(danger, 1000);
+
+      }
+    }
+  }
+}
+let dangerCount = 0;
+function danger() {
+  if (dangerCount <= 10) {
+    if (!lock) {
+      document.querySelector('#lock').src = 'unlock_danger.png';
+      dangerCount += 0.5;
+    }
+  }
+}
+function noDanger() {
+  if (dangerCount <= 10) {
+    if (!lock) {
+      document.querySelector('#lock').src = 'unlock.png';
+      dangerCount += 0.5;
     }
   }
 }
@@ -94,9 +143,9 @@ function slowDown() {
 }
 function brake() {
   if (speed > 0 && isBrake) {
-    cpuGauge.setValueAnimated(speed -= .4); 
-  } 
-  if(speed < 0) {
+    cpuGauge.setValueAnimated(speed -= .4);
+  }
+  if (speed < 0) {
     isBrake = false;
   }
 }
@@ -135,7 +184,7 @@ function welcome() {
 }
 async function loadTemperature() {
   try {
-    const response = await fetch('openweatherapihere');
+    const response = await fetch('weatherapikeyhere');
     if (response.ok) {
       const body = await response.json();
       document.querySelector('#temp').innerHTML = Math.round(((body.list[0].main.temp - 273.15) + Number.EPSILON) * 100) / 100 + "°C"
